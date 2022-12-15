@@ -16,8 +16,8 @@
   "contributes": {
     "commands": [
       {
-        "command": "quick-snippets.helloWorld",
-        "title": "Hello World"
+        "command": "quick-snippets.createSnippet",
+        "title": "Quick Snippets: Create Snippet"
       }
     ]
   },
