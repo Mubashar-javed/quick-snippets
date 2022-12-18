@@ -7,7 +7,7 @@ end_of_line = lf
 insert_final_newline = true
 
 # Indentation override for all JS under lib directory
-[*.ts]
+[*.ts, *.tsx, *.js]
 indent_style = space
 indent_size = 2
 single_quote = false

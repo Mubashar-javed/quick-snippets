@@ -7,7 +7,7 @@ export function activate(context: vscode.ExtensionContext) {
   const insertSnippet = vscode.commands.registerCommand(
     "quick-snippets.createSnippet",
     () => {
-      activateTextSelection();
+      activateTextSelection(context);
     }
   );
 

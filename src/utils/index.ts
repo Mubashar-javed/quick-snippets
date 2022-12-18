@@ -2,7 +2,7 @@ import * as os from "os";
 import * as path from "path";
 import * as vscode from "vscode";
 
-export namespace utils {
+export namespace Utils {
   /**
    * It gets the currently selected text in the active editor
    * @returns The selected text in the active editor.
