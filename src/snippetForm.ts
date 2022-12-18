@@ -3,29 +3,29 @@ import { utils } from "./utils";
 import { DefaultError } from "./utils/constants";
 
 export default function openSnippetForm() {
-    const editor = vscode.window.activeTextEditor;
+  const editor = vscode.window.activeTextEditor;
 
-    const panel = vscode.window.createWebviewPanel(
-        "snippetForm",
-        "Snippet Form",
-        vscode.ViewColumn.One,
-        { enableScripts: true }
-    );
+  const panel = vscode.window.createWebviewPanel(
+    "snippetForm",
+    "Snippet Form",
+    vscode.ViewColumn.One,
+    { enableScripts: true }
+  );
 
-    const selectedText = utils.getSelectedText();
-    if (!selectedText) {
-        vscode.window.showErrorMessage(DefaultError.NO_TEXT);
-        return;
-    }
+  const selectedText = utils.getSelectedText();
+  if (!selectedText) {
+    vscode.window.showErrorMessage(DefaultError.NO_TEXT);
+    return;
+  }
 
-    panel.webview.html = getWebviewContent(selectedText || "");
-    panel.onDidDispose(() => {
-        // Clean up our resources
-    });
+  panel.webview.html = getWebviewContent(selectedText || "");
+  panel.onDidDispose(() => {
+    // Clean up our resources
+  });
 }
 
 function getWebviewContent(selectedText: string) {
-    return `
+  return `
     <!DOCTYPE html>
     <html lang="en">
     <head>

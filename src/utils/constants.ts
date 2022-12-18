@@ -2,7 +2,7 @@
 
 // Define all the errors messages here
 export enum DefaultError {
-    NO_TEXT = "No text selected!",
-    UNKNOWN_ERROR = "Unknown error",
-    UNKNOWN_LANGUAGE = "Unknown Language",
+  NO_TEXT = "No text selected!",
+  UNKNOWN_ERROR = "Unknown error",
+  UNKNOWN_LANGUAGE = "Unknown Language",
 }
