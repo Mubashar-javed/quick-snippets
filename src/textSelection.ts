@@ -1,20 +1,20 @@
 import * as vscode from "vscode";
-import initSnippetForm from "./snippetForm";
+import openSnippetForm from "./snippetForm";
+import { utils } from "./utils";
+import { DefaultError } from "./utils/constants";
+
 
 export function activateTextSelection() {
-    const editor = vscode.window.activeTextEditor;
-    const selectedText = editor?.document.getText(editor.selection);
+    const selectedText = utils.getSelectedText();
 
     if (!selectedText) {
-        vscode.window.showErrorMessage("No text selected");
+        vscode.window.showErrorMessage(DefaultError.NO_TEXT);
         return;
     }
-
-    const language = editor?.document.languageId;
 
     // vscode.window.showInformationMessage(`Selected Text is ${selectedText}`);
     // vscode.window.showInformationMessage(`Langeuage is ${language}`);
 
     // open a new tab with the selected text
-    initSnippetForm(language, selectedText);
+    openSnippetForm();
 }

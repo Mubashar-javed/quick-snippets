@@ -1,20 +1,24 @@
 import * as vscode from "vscode";
+import { utils } from "./utils";
+import { DefaultError } from "./utils/constants";
 
-export default function initSnippetForm(
-    language: string | undefined,
-    selectedText: string
-) {
+export default function openSnippetForm() {
+    const editor = vscode.window.activeTextEditor;
+
     const panel = vscode.window.createWebviewPanel(
         "snippetForm",
         "Snippet Form",
         vscode.ViewColumn.One,
-        {
-            enableScripts: true,
-        }
+        { enableScripts: true }
     );
 
-    panel.webview.html = getWebviewContent(selectedText);
+    const selectedText = utils.getSelectedText();
+    if (!selectedText) {
+        vscode.window.showErrorMessage(DefaultError.NO_TEXT);
+        return;
+    }
 
+    panel.webview.html = getWebviewContent(selectedText || "");
     panel.onDidDispose(() => {
         // Clean up our resources
     });
