@@ -7,6 +7,7 @@
     <title>Snippet Form</title>
   </head>
   <body>
+  
     <div class="container">
       <h1>Snippet Form</h1>
       <div class="flex-container">
@@ -35,5 +36,26 @@
 
       <script src="__mainPath"></script>
     </div>
-  </body>
+    <script>
+      const prefix = document.getElementById('prefix');
+      const description = document.getElementById('description');
+      const snippet = document.getElementById('snippet');
+
+      const prevState = vscode.getState();
+      if (prevState) {
+        prefix.value = prevState.prefix;
+        description.value = prevState.description;
+        snippet.innerText = prevState.snippet;
+      }
+      
+      setInterval(() => {
+        vscode.setState({
+          prefix: prefix.value,
+          description: description.value,
+          snippet: snippet.value
+        });
+      }, 1000);
+    </script>
+  </div>
+</body>
 </html>
