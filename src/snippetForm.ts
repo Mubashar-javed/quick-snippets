@@ -53,8 +53,25 @@ export default function openSnippetForm(context: vscode.ExtensionContext) {
   }
 
   panel.webview.html = getWebviewContent(context, panel.webview, selectedText);
+  listenWebviewChanges(panel.webview);
   panel.onDidDispose(() => {
     // Clean up our resources
+  });
+}
+
+function listenWebviewChanges(webview: vscode.Webview) {
+
+  webview.onDidReceiveMessage((message) => {
+    switch (message.command) {
+      case "save":
+        const { prefix, description, body } = message.data;
+        const snippet = {
+          prefix,
+          description,
+          body,
+        };
+        console.log("final snippet: ", snippet);
+    }
   });
 }
 
@@ -70,17 +87,17 @@ function getWebviewContent(
     Uri.joinPath(context.extensionUri, "assets", "public", "main.js")
   );
 
-//read html content from a file
-  let html = fs.readFileSync(
-    path.join(__dirname, "..", "assets", "public", "form.html"),
-    "utf-8"
+  const htmlFile = webview.asWebviewUri(
+    Uri.joinPath(context.extensionUri, "assets", "public", "form.html")
   );
-  
-// put selected text, style path, as well as main path in the html file
-//TODO: use a template string approach to do this
 
-  html = html.replace("__selectedText", selectedText);
-  html = html.replace("__stylePath", stylePath.toString());
-  html = html.replace("__mainPath", mainPath.toString());
-  return html;
+  const html = fs.readFileSync(htmlFile.fsPath, "utf-8");
+
+  // put selected text, style path, as well as main path in the html file
+  //TODO: use a template string approach to do this
+
+  return html
+    .replace("__selectedText", selectedText)
+    .replace("__stylePath", stylePath.toString())
+    .replace("__mainPath", mainPath.toString());
 }

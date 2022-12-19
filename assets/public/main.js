@@ -1,8 +1,12 @@
-console.log("Hello World from main.js");
+const vscode = acquireVsCodeApi();
 
 function handleSave() {
-    var prefix = document.getElementById("prefix").value;
-    var description = document.getElementById("description").value;
-    var snippet = document.getElementById("snippet").value;
+  const prefix = document.getElementById("prefix").value;
+  const description = document.getElementById("description").value;
+  const body = document.getElementById("snippet").value;
 
+  const snippet = { prefix, description, body };
+
+  // send message back to extension
+  vscode.postMessage({ command: "save", data: snippet });
 }
