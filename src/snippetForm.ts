@@ -5,6 +5,12 @@ import { Uri } from "vscode";
 import { Utils } from "./utils";
 import { DefaultError } from "./utils/constants";
 
+interface Snippet {
+  prefix: string;
+  description: string;
+  body: string[];
+}
+
 export default function openSnippetForm(context: vscode.ExtensionContext) {
   const editor = vscode.window.activeTextEditor;
   const activeLanguage = Utils.editorActiveLanguage();
@@ -60,16 +66,10 @@ export default function openSnippetForm(context: vscode.ExtensionContext) {
 }
 
 function listenWebviewChanges(webview: vscode.Webview) {
-
   webview.onDidReceiveMessage((message) => {
     switch (message.command) {
       case "save":
-        const { prefix, description, body } = message.data;
-        const snippet = {
-          prefix,
-          description,
-          body,
-        };
+        const snippet = message.data as Snippet;
         console.log("final snippet: ", snippet);
     }
   });
