@@ -1,3 +1,4 @@
+import * as fs from "fs";
 import * as path from "path";
 import * as vscode from "vscode";
 import { Uri } from "vscode";
@@ -69,25 +70,17 @@ function getWebviewContent(
     Uri.joinPath(context.extensionUri, "assets", "public", "main.js")
   );
 
-  return `
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script>
-          window.vscode = acquireVsCodeApi();
-        </script>
-        <link href="${stylePath}" rel="stylesheet" />
-        <title>Snippet Form</title>
-    </head>
-    <body>
-        <h1>Snippet Form</h1>
-        <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" width="300" />
-        <textarea id="snippet" name="snippet" rows="10" cols="30">${selectedText}</textarea>
+//read html content from a file
+  let html = fs.readFileSync(
+    path.join(__dirname, "..", "assets", "public", "form.html"),
+    "utf-8"
+  );
+  
+// put selected text, style path, as well as main path in the html file
+//TODO: use a template string approach to do this
 
-        <script src="${mainPath}"></script>
-    </body>
-    </html>
-    `;
+  html = html.replace("__selectedText", selectedText);
+  html = html.replace("__stylePath", stylePath.toString());
+  html = html.replace("__mainPath", mainPath.toString());
+  return html;
 }

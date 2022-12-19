@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+      window.vscode = acquireVsCodeApi();
+    </script>
+    <link href="__stylePath" rel="stylesheet" />
+    <title>Snippet Form</title>
+</head>
+<body>
+  <div class="container">  
+    <h1>Snippet Form</h1>
+    <div class="flex-container">
+      <label for="prefix">Prefix: </label>
+      <input type="text" id="prefix" name="prefix" value="testing-snippet">
+    </div>
+    <div class="flex-container">
+      <label for="description">Description: </label>
+      <input type="text" id="description" name="description" value="testing-snippet">
+    </div>
+    <div class="flex-container">
+      <label for="snippet">Snippet</label>
+      <textarea id="snippet" name="snippet" rows="10" cols="30">__selectedText</textarea>
+    </div>
+    <div>
+      <button id="save" onclick="handleSave()">Save Snippet</button>
+    </div>
+    
+    <script src="__mainPath"></script>
+  </div>
+</body>
+</html>
