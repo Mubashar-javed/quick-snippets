@@ -10,3 +10,9 @@ function handleSave() {
   // send message back to extension
   vscode.postMessage({ command: "save", data: snippet });
 }
+
+function showTextArea() {
+  document.getElementById("snippet-text-area").style.display = "block";
+  document.getElementById("snippet-text-area").focus();
+  document.getElementById('snippet-area').style.display = "none";
+}

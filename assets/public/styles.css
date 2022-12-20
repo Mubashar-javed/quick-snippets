@@ -10,20 +10,16 @@ label {
 }
 
 input,
-textarea {
+#snippet-area,
+#snippet-text-area {
   font-size: medium;
-  background-color: rgb(71, 71, 71);
-  color: white;
+  background-color: var(--vscode-editor-background);
+  color: var(--vscode-editor-foreground);
   border: 1px solid rgb(151, 149, 149);
   border-radius: 3px;
   padding: 5px;
   margin: 5px;
   min-width: 65%;
-}
-
-textarea {
-  min-height: 300px;
-  resize: none;
 }
 
 .container {

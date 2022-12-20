@@ -1,3 +1,4 @@
+
 import * as fs from "fs";
 import * as path from "path";
 import * as vscode from "vscode";
@@ -93,11 +94,13 @@ function getWebviewContent(
 
   const html = fs.readFileSync(htmlFile.fsPath, "utf-8");
 
+  const selectionLanguage = `language-${Utils.editorActiveLanguage()}`;
   // put selected text, style path, as well as main path in the html file
   //TODO: use a template string approach to do this
 
   return html
     .replace("__selectedText", selectedText)
     .replace("__stylePath", stylePath.toString())
-    .replace("__mainPath", mainPath.toString());
+    .replace("__mainPath", mainPath.toString())
+    .replace("__language", selectionLanguage);
 }
