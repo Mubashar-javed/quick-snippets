@@ -1,8 +1,15 @@
+import * as fs from "fs";
 import * as path from "path";
 import * as vscode from "vscode";
 import { Uri } from "vscode";
 import { Utils } from "./utils";
 import { DefaultError } from "./utils/constants";
+
+interface Snippet {
+  prefix: string;
+  description: string;
+  body: string[];
+}
 
 export default function openSnippetForm(context: vscode.ExtensionContext) {
   const editor = vscode.window.activeTextEditor;
@@ -52,8 +59,19 @@ export default function openSnippetForm(context: vscode.ExtensionContext) {
   }
 
   panel.webview.html = getWebviewContent(context, panel.webview, selectedText);
+  listenWebviewChanges(panel.webview);
   panel.onDidDispose(() => {
     // Clean up our resources
+  });
+}
+
+function listenWebviewChanges(webview: vscode.Webview) {
+  webview.onDidReceiveMessage((message) => {
+    switch (message.command) {
+      case "save":
+        const snippet = message.data as Snippet;
+        console.log("final snippet: ", snippet);
+    }
   });
 }
 
@@ -69,25 +87,17 @@ function getWebviewContent(
     Uri.joinPath(context.extensionUri, "assets", "public", "main.js")
   );
 
-  return `
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script>
-          window.vscode = acquireVsCodeApi();
-        </script>
-        <link href="${stylePath}" rel="stylesheet" />
-        <title>Snippet Form</title>
-    </head>
-    <body>
-        <h1>Snippet Form</h1>
-        <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" width="300" />
-        <textarea id="snippet" name="snippet" rows="10" cols="30">${selectedText}</textarea>
+  const htmlFile = webview.asWebviewUri(
+    Uri.joinPath(context.extensionUri, "assets", "public", "form.html")
+  );
 
-        <script src="${mainPath}"></script>
-    </body>
-    </html>
-    `;
+  const html = fs.readFileSync(htmlFile.fsPath, "utf-8");
+
+  // put selected text, style path, as well as main path in the html file
+  //TODO: use a template string approach to do this
+
+  return html
+    .replace("__selectedText", selectedText)
+    .replace("__stylePath", stylePath.toString())
+    .replace("__mainPath", mainPath.toString());
 }

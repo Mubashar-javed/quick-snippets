@@ -1,6 +1,8 @@
+import * as fs from "fs";
 import * as os from "os";
 import * as path from "path";
 import * as vscode from "vscode";
+import { ColorThemeKind } from "vscode";
 
 export namespace Utils {
   /**
@@ -66,5 +68,34 @@ export namespace Utils {
     const editor = vscode.window.activeTextEditor;
     const language = editor?.document.languageId;
     return language;
+  }
+
+  /**
+   * It returns the name of the current theme
+   * @returns The name of the current theme.
+   */
+  export function getCurrentThemeName(): string {
+    const settingsFile = path.join(getUserSettingsPath(), "settings.json");
+
+    const jsonData = fs.readFileSync(settingsFile).toString();
+
+    // replacing all the comments in the settings.json file as
+    // they are not parsed by JSON.parse
+    const replaced = jsonData.replace(/\/\/.*/g, "");
+    const json = JSON.parse(replaced);
+    let themeName: string | undefined = json["workbench.colorTheme"];
+    const themeKind = vscode.window.activeColorTheme.kind;
+
+    if (!themeName) {
+      // mean user is using the default theme
+      themeName = {
+        [ColorThemeKind.Light]: "Default Light",
+        [ColorThemeKind.Dark]: "Default Dark",
+        [ColorThemeKind.HighContrast]: "Default High Contrast",
+        [ColorThemeKind.HighContrastLight]: "Default High Contrast Light",
+      }[themeKind];
+    }
+
+    return themeName;
   }
 }
