@@ -15,7 +15,7 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:quick-snippets.helloWorld"
+    "quick-snippets.createSnippet"
   ],
   "main": "./dist/extension.js",
   "contributes": {
@@ -23,6 +23,13 @@
       {
         "command": "quick-snippets.createSnippet",
         "title": "Quick Snippets: Create Snippet"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "quick-snippets.createSnippet",
+        "key": "ctrl+alt+q",
+        "mac": "cmd+shift+q"
       }
     ]
   },
