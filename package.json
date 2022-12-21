@@ -3,6 +3,11 @@
   "displayName": "Quick Snippets",
   "description": "Start creating snippets quickly and easily.🚀",
   "version": "0.0.1",
+  "icon": "assets/images/qs-icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mubashar-javed/quick-snippets"
+  },
   "engines": {
     "vscode": "^1.74.0"
   },
