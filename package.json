@@ -10,7 +10,6 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:quick-snippets.helloWorld",
     "quick-snippets.createSnippet"
   ],
   "main": "./dist/extension.js",
