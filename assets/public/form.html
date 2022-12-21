@@ -7,39 +7,70 @@
     <title>Snippet Form</title>
   </head>
   <body>
-  
     <div class="container">
-      <h1>Snippet Form</h1>
-      <div class="flex-container">
-        <label for="prefix">Prefix: </label>
-        <input type="text" id="prefix" name="prefix" value="testing-snippet" />
-      </div>
-      <div class="flex-container">
-        <label for="description">Description: </label>
-        <input
-          type="text"
-          id="description"
-          name="description"
-          value="testing-snippet"
-        />
-      </div>
-      <div class="flex-container">
-        <label for="snippet">Snippet</label>
-        <textarea id="snippet" name="snippet" rows="10" cols="30">
-        __selectedText
-      </textarea
-        >
-      </div>
-      <div>
-        <button id="save" onclick="handleSave()">Save Snippet</button>
+      <h1 class="heading">Snippet Form</h1>
+      <div class="d-flex flex-column col-gap mt-2">
+        <div class="d-flex justify-content-center flex-column">
+          <div class="mb-xs">
+            <label for="prefix">Prefix: <span class="required">*</span></label>
+            <span class="setting-item-description">
+              This will be unique prefix to identify and use your snippet in
+              vscode
+            </span>
+          </div>
+          <input
+            type="text"
+            id="prefix"
+            name="prefix"
+            placeholder="Your snippet prefix..."
+          />
+        </div>
+        <div class="d-flex justify-content-center flex-column">
+          <div class="mb-xs">
+            <label for="description">Description:</label>
+            <span class="setting-item-description">
+              A description of your snippet
+            </span>
+          </div>
+          <input
+            type="text"
+            id="description"
+            name="description"
+            placeholder="Snippet description..."
+          />
+        </div>
+        <div class="d-flex justify-content-center flex-column">
+          <div class="mb-xs">
+            <label for="snippet">
+              Snippet: <span class="required">*</span>
+            </label>
+            <span class="setting-item-description">
+              Your snippet code that will be saved in your snippets file. For
+              more information about snippet syntax, visit
+              <a
+                href="https://code.visualstudio.com/docs/editor/userdefinedsnippets#_snippet-syntax"
+                target="_blank"
+              >
+                docs link.
+              </a>
+            </span>
+          </div>
+          <textarea id="snippet" name="snippet" rows="10" cols="30">
+          __selectedText
+        </textarea
+          >
+        </div>
+        <div class="button-container">
+          <button id="save" onclick="handleSave()">Save Snippet</button>
+        </div>
       </div>
 
       <script src="__mainPath"></script>
     </div>
     <script>
-      const prefix = document.getElementById('prefix');
-      const description = document.getElementById('description');
-      const snippet = document.getElementById('snippet');
+      const prefix = document.getElementById("prefix");
+      const description = document.getElementById("description");
+      const snippet = document.getElementById("snippet");
 
       const prevState = vscode.getState();
       if (prevState) {
@@ -47,15 +78,14 @@
         description.value = prevState.description;
         snippet.innerText = prevState.snippet;
       }
-      
+
       setInterval(() => {
         vscode.setState({
           prefix: prefix.value,
           description: description.value,
-          snippet: snippet.value
+          snippet: snippet.value,
         });
       }, 1000);
     </script>
-  </div>
-</body>
+  </body>
 </html>

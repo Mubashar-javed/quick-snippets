@@ -1,6 +1,38 @@
+body {
+  font-family: "Segoe WPC", "Segoe UI", sans-serif, Consolas, "Courier New",
+    monospace;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
 label {
   display: block;
-  font-size: medium;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.container {
+  /* min-width: 65%; */
+  width: 65%;
+  margin: 0 auto;
 }
 
 .flex-container {
@@ -12,13 +44,12 @@ label {
 input,
 textarea {
   font-size: medium;
-  background-color: rgb(71, 71, 71);
-  color: white;
+  color: var(--vscode-settings-textInputForeground);
   border: 1px solid rgb(151, 149, 149);
   border-radius: 3px;
-  padding: 5px;
-  margin: 5px;
+  padding: 4px 6px;
   min-width: 65%;
+  background-color: var(--vscode-settings-textInputBackground);
 }
 
 textarea {
@@ -26,21 +57,53 @@ textarea {
   resize: none;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  align-content: space-around;
-  min-width: 65%;
+.required {
+  color: red;
+}
+
+input:focus,
+textarea:focus {
+  outline-color: #0090f1;
+  border-color: var(--vscode-focusBorder);
 }
 
 button {
-  font-size: large;
-  background-color: rgb(71, 71, 71);
-  color: white;
-  border: 1px solid rgb(151, 149, 149);
-  border-radius: 3px;
+  background-color: var(--vscode-button-background);
+  color: var(--vscode-button-foreground);
   padding: 5px;
-  margin: 5px;
-  margin-top: 25px;
+  /* cursor: pointer; */
+  border: 1px solid var(--vscode-button-border);
+  width: 100%;
+}
+
+button:hover {
+  background-color: var(--vscode-button-hoverBackground);
+}
+
+.heading {
+  font-size: 26px;
+  font-weight: 600;
+}
+
+::placeholder {
+  color: var(--vscode-input-placeholderForeground);
+  font-size: 13px;
+}
+
+.col-gap {
+  row-gap: 20px;
+}
+
+.mt-2 {
+  margin-top: 20px;
+}
+
+.mb-xs {
+  margin-bottom: 9px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 80%;
+  }
 }
