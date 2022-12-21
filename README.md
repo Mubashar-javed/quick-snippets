@@ -9,7 +9,7 @@ Vscode extension that allows users to create and insert user defined code snippe
 - Fullscreen mode Form Visualizer
 - Select text and use key binding (ctrl + q) and we will get it done for you
 
-## Installation
+## Local Setup
 
 Install my-project with npm
 
@@ -31,7 +31,7 @@ Install my-project with npm
 
 ## Issues and Fixes
 
-- If you are having issues with the extension, please create an issue [here](https://github.com/Mubashar-javed/quick-snippets/issues). I will try to fix it as soon as possible.
+- If you are having issues with the extension, please create an issue [here](https://github.com/Mubashar-javed/quick-snippets/issues). We will try to fix it as soon as possible.
 
 ## Contribute
 
