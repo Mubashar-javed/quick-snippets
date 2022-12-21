@@ -15,7 +15,9 @@
     "semi": "off",
     "no-var": "warn",
     "array-bracket-newline": "warn",
-    "prefer-const": "warn"
+    "prefer-const": "warn",
+    "no-debugger": "error",
+    "no-console": "warn"
   },
   "ignorePatterns": ["out", "dist", "**/*.d.ts"]
 }
