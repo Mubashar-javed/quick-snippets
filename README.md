@@ -7,16 +7,7 @@ Vscode extension that allows users to create and insert user defined code snippe
 - Auto formatting according to standards of a snippet
 - Live previews to add title and description of snippet
 - Fullscreen mode Form Visualizer
-- Select text and use key binding (cmd+shift+q for mac OS, ctrl+alt+q for Windows) and we will get it done for you
-
-## Local Setup
-
-Install my-project with npm
-
-```bash
-  npm install my-project
-  cd my-project
-```
+- Select text and use key binding ( `CMD + SHIFT + Q` for mac OS, `CTRL + ALT + Q` for Windows ) and we will get it done for you
 
 ## Highlights
 
