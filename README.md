@@ -1,71 +1,42 @@
-# quick-snippets README
+# Quick Snippet
 
-This is the README for your extension "quick-snippets". After writing up a brief description, we recommend including the following sections.
+Vscode extension that allows users to create and insert user defined code snippets. This plugin is still in beta, please create an issue or feature request if you notice anything I've missed.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- Auto formatting according to standards of a snippet
+- Live previews to add title and description of snippet
+- Fullscreen mode Form Visualizer
+- Select text and use key binding ( `CMD + SHIFT + Q` for mac OS, `CTRL + ALT + Q` for Windows ) and we will get it done for you
 
-For example if there is an image subfolder under your extension project workspace:
+## Highlights
 
-\!\[feature X\]\(images/feature-x.png\)
+- Select a section of code that you want to be converted into snipper and press ctrl + q (keybinding can be changed in settings)
+- The extension will automatically format the snippet and add the title and description
+- Click the save button to save the snippet, and that's all you need to do 😄
+- You can also use the command palette to create a snippet
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+## Demo
 
-## Requirements
+![App Screenshot](./assets/media/demo/qs-demo.gif)
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+## Issues and Fixes
 
-## Extension Settings
+- If you are having issues with the extension, please create an issue [here](https://github.com/Mubashar-javed/quick-snippets/issues). We will try to fix it as soon as possible.
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+## Contribute
 
-For example:
+Contributions are always welcome!
+To be able to contribute to Quick Snippet development, you need to be at ease with Typescript and Git usage. ⚡️
 
-This extension contributes the following settings:
+## Links
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+- [Quick Snippet](https://marketplace.visualstudio.com/items?itemName=MubasharJaved.quick-snippet)
+- [Github](https://marketplace.visualstudio.com/items?itemName=MubasharJaved.quick-snippet)
+- [NPM](https://www.npmjs.com/package/quick-snippet)
 
-## Known Issues
+## Authors
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+- [@Mubashar Javed](https://www.github.com/Mubashar-javed)
+- [@Asad Ashraf](https://github.com/Asad9988)
+- [@Muhammad Faisal](https://github.com/Asad9988)
