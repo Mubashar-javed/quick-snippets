@@ -3,24 +3,32 @@
   "displayName": "Quick Snippets",
   "description": "Start creating snippets quickly and easily.🚀",
   "version": "0.0.1",
+  "publisher": "Mubashar-Javed",
   "icon": "assets/images/qs-icon.png",
+  "engines": {
+    "vscode": "^1.72.0"
+  },
   "keywords": [
     "snippets",
     "quick snippets",
     "quick-snippets",
     "quick snippets vscode",
-    "quick-snippets vscode",
-    "quick snippets extension",
     "snippet generator"
   ],
   "repository": {
     "type": "git",
     "url": "https://github.com/Mubashar-javed/quick-snippets"
   },
-  "engines": {
-    "vscode": "^1.74.0"
+  "homepage": "https://github.com/Mubashar-javed/quick-snippets",
+  "author": {
+    "name": "Mubashar Javed",
+    "email": "mubasharbravo302@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/Mubashar-javed/quick-snippets/issues"
   },
   "categories": [
+    "Snippets",
     "Other"
   ],
   "activationEvents": [
@@ -59,7 +67,7 @@
     "@types/glob": "^8.0.0",
     "@types/mocha": "^10.0.1",
     "@types/node": "16.x",
-    "@types/vscode": "^1.74.0",
+    "@types/vscode": "^1.72.0",
     "@typescript-eslint/eslint-plugin": "^5.45.0",
     "@typescript-eslint/parser": "^5.45.0",
     "@vscode/test-electron": "^2.2.0",
