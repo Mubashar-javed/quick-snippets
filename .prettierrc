@@ -1,5 +1,4 @@
 {
-  "editorconfig": true,
   "bracketSpacing": false,
   "arrowParens": "always",
   "semi": true,
