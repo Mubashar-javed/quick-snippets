@@ -1,10 +1,14 @@
 body {
-  font-family: "Segoe WPC", "Segoe UI", sans-serif, Consolas, "Courier New",
+  font-family: 'Segoe WPC', 'Segoe UI', sans-serif, Consolas, 'Courier New',
     monospace;
 }
 
 .d-flex {
   display: flex;
+}
+
+.d-none {
+  display: none;
 }
 
 .flex-column {
@@ -72,7 +76,7 @@ button {
   background-color: var(--vscode-button-background);
   color: var(--vscode-button-foreground);
   padding: 5px;
-  /* cursor: pointer; */
+  cursor: pointer;
   border: 1px solid var(--vscode-button-border);
   width: 100%;
 }
@@ -103,6 +107,22 @@ button:hover {
   margin-bottom: 9px;
 }
 
+.position-relative {
+  position: relative;
+}
+
+.setting-item-validation-message {
+  background-color: var(--vscode-inputValidation-errorBackground);
+  color: var(--vscode-inputValidation-errorForeground);
+  border: 1px solid var(--vscode-inputValidation-errorBorder);
+  line-height: 1.4em !important;
+  position: absolute;
+  margin-top: -1px;
+  z-index: 1;
+  padding: 3px 5px;
+  border-radius: 2px;
+}
+
 @media (max-width: 768px) {
   .container {
     width: 80%;
@@ -110,11 +130,16 @@ button:hover {
 }
 
 pre {
-  font-family: "Segoe WPC", "Segoe UI", sans-serif, Consolas, "Courier New",
+  font-family: 'Segoe WPC', 'Segoe UI', sans-serif, Consolas, 'Courier New',
     monospace;
   font-size: 14px;
   color: var(--vscode-button-foreground);
   background-color: var(--vscode-editor-background);
   padding: 2px 4px;
   border-radius: 3px;
+}
+
+:disabled {
+  cursor: not-allowed;
+  user-select: none;
 }

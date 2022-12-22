@@ -1,10 +1,11 @@
-import * as fs from "fs";
-import * as path from "path";
-import * as vscode from "vscode";
-import { Uri } from "vscode";
-import { Utils } from "./utils";
-import { DefaultError } from "./utils/constants";
+import * as fs from 'fs';
+import * as path from 'path';
+import * as vscode from 'vscode';
+import {Uri} from 'vscode';
+import {Utils} from './utils';
+import {DefaultError} from './utils/constants';
 
+// TODO: move this to a separate file
 interface Snippet {
   prefix: string;
   description: string;
@@ -12,7 +13,6 @@ interface Snippet {
 }
 
 export default function openSnippetForm(context: vscode.ExtensionContext) {
-  const editor = vscode.window.activeTextEditor;
   const activeLanguage = Utils.editorActiveLanguage();
 
   if (!activeLanguage) {
@@ -46,10 +46,10 @@ export default function openSnippetForm(context: vscode.ExtensionContext) {
   // }
 
   const panel = vscode.window.createWebviewPanel(
-    "snippetForm",
-    "Snippet Form",
+    'snippetForm',
+    'Snippet Form',
     vscode.ViewColumn.One,
-    { enableScripts: true }
+    {enableScripts: true}
   );
 
   const selectedText = Utils.getSelectedText();
@@ -68,7 +68,7 @@ export default function openSnippetForm(context: vscode.ExtensionContext) {
 function listenWebviewChanges(webview: vscode.Webview) {
   webview.onDidReceiveMessage((message) => {
     switch (message.command) {
-      case "save":
+      case 'save':
         const snippet = message.data as Snippet;
     }
   });
@@ -80,24 +80,24 @@ function getWebviewContent(
   selectedText: string
 ) {
   const stylePath = webview.asWebviewUri(
-    Uri.joinPath(context.extensionUri, "assets", "public", "styles.css")
+    Uri.joinPath(context.extensionUri, 'assets', 'public', 'styles.css')
   );
   const mainPath = webview.asWebviewUri(
-    Uri.joinPath(context.extensionUri, "assets", "public", "main.js")
+    Uri.joinPath(context.extensionUri, 'assets', 'public', 'main.js')
   );
 
   const htmlFile = webview.asWebviewUri(
-    Uri.joinPath(context.extensionUri, "assets", "public", "form.html")
+    Uri.joinPath(context.extensionUri, 'assets', 'public', 'form.html')
   );
 
-  const html = fs.readFileSync(htmlFile.fsPath, "utf-8");
+  const html = fs.readFileSync(htmlFile.fsPath, 'utf-8');
 
   const selectionLanguage = `language-${Utils.editorActiveLanguage()}`;
   // put selected text, style path, as well as main path in the html file
   //TODO: use a template string approach to do this
   return html
-    .replace("__selectedText", selectedText)
-    .replace("__stylePath", stylePath.toString())
-    .replace("__mainPath", mainPath.toString())
-    .replace("__language", selectionLanguage);
+    .replace('__selectedText', selectedText)
+    .replace('__stylePath', stylePath.toString())
+    .replace('__mainPath', mainPath.toString())
+    .replace('__language', selectionLanguage); //this is for future use when we add support for multiple languages
 }

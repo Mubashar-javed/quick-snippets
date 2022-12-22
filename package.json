@@ -43,7 +43,7 @@
     "pretest": "npm run compile-tests && npm run compile && npm run lint",
     "lint": "eslint src --ext ts",
     "test": "node ./out/test/runTest.js",
-    "format": "npm run lint && prettier --write .",
+    "format": "npm run lint && prettier --write . && git add .",
     "prepare": "husky install"
   },
   "devDependencies": {

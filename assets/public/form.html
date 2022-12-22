@@ -6,8 +6,7 @@
     <link href="__stylePath" rel="stylesheet" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/themes/prism.min.css"
-    />
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/themes/prism.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/prism.min.js"></script>
 
     <title>Snippet Form</title>
@@ -18,7 +17,10 @@
       <div class="d-flex flex-column col-gap mt-2">
         <div class="d-flex justify-content-center flex-column">
           <div class="mb-xs">
-            <label for="prefix">Prefix: <span class="required">*</span></label>
+            <label for="prefix">
+              Prefix:&nbsp;
+              <span class="required">*</span>
+            </label>
             <span class="setting-item-description">
               This will be unique prefix to identify and use your snippet in
               vscode
@@ -28,12 +30,16 @@
             type="text"
             id="prefix"
             name="prefix"
-            placeholder="Your snippet prefix..."
-          />
+            placeholder="Your snippet prefix..." />
+          <div class="position-relative d-none" id="prefix-error">
+            <div class="setting-item-validation-message">
+              This field is required
+            </div>
+          </div>
         </div>
         <div class="d-flex justify-content-center flex-column">
           <div class="mb-xs">
-            <label for="description">Description:</label>
+            <label for="description">Description:&nbsp;</label>
             <span class="setting-item-description">
               A description of your snippet
             </span>
@@ -42,8 +48,7 @@
             type="text"
             id="description"
             name="description"
-            placeholder="Snippet description..."
-          />
+            placeholder="Snippet description..." />
         </div>
         <div class="d-flex justify-content-center flex-column">
           <div class="mb-xs">
@@ -55,8 +60,7 @@
               more information about snippet syntax, visit
               <a
                 href="https://code.visualstudio.com/docs/editor/userdefinedsnippets#_snippet-syntax"
-                target="_blank"
-              >
+                target="_blank">
                 docs link.
               </a>
             </span>
@@ -68,16 +72,16 @@
           </pre>
         </div>
         <div class="button-container">
-          <button id="save" onclick="handleSave()">Save Snippet</button>
+          <button id="save-btn" onclick="handleSave()">Save Snippet</button>
         </div>
       </div>
 
       <script src="__mainPath"></script>
     </div>
     <script>
-      const prefix = document.getElementById("prefix");
-      const description = document.getElementById("description");
-      const snippet = document.getElementById("snippet-area");
+      const prefix = document.getElementById('prefix');
+      const description = document.getElementById('description');
+      const snippet = document.getElementById('snippet-area');
 
       const prevState = vscode.getState();
       if (prevState) {
