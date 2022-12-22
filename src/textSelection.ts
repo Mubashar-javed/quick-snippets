@@ -3,7 +3,6 @@ import openSnippetForm from "./snippetForm";
 import { Utils } from "./utils";
 import { DefaultError } from "./utils/constants";
 
-
 export function activateTextSelection(context: vscode.ExtensionContext) {
   const selectedText = Utils.getSelectedText();
 
