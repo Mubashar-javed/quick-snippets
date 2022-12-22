@@ -120,6 +120,9 @@ export namespace Utils {
     if (!fs.existsSync(snippetFile)) {
       fs.writeFileSync(snippetFile, '{}');
     } else {
+      if (fs.readFileSync(snippetFile, 'utf-8').length === 0) {
+        fs.writeFileSync(snippetFile, '{}');
+      }
       const jsonData = fs.readFileSync(snippetFile, 'utf-8');
       const json = JSON.parse(jsonData);
       json[prefix] = {prefix, description, body: [body]};
