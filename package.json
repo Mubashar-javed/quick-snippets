@@ -4,6 +4,15 @@
   "description": "Start creating snippets quickly and easily.🚀",
   "version": "0.0.1",
   "icon": "assets/images/qs-icon.png",
+  "keywords": [
+    "snippets",
+    "quick snippets",
+    "quick-snippets",
+    "quick snippets vscode",
+    "quick-snippets vscode",
+    "quick snippets extension",
+    "snippet generator"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/Mubashar-javed/quick-snippets"
