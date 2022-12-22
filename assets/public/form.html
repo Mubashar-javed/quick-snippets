@@ -12,7 +12,10 @@
       <div class="d-flex flex-column col-gap mt-2">
         <div class="d-flex justify-content-center flex-column">
           <div class="mb-xs">
-            <label for="prefix">Prefix: <span class="required">*</span></label>
+            <label for="prefix">
+              Prefix:&nbsp;
+              <span class="required">*</span>
+            </label>
             <span class="setting-item-description">
               This will be unique prefix to identify and use your snippet in
               vscode
@@ -24,10 +27,15 @@
             name="prefix"
             placeholder="Your snippet prefix..."
           />
+          <div class="position-relative d-none" id="prefix-error">
+            <div class="setting-item-validation-message">
+              This field is required
+            </div>
+          </div>
         </div>
         <div class="d-flex justify-content-center flex-column">
           <div class="mb-xs">
-            <label for="description">Description:</label>
+            <label for="description">Description:&nbsp;</label>
             <span class="setting-item-description">
               A description of your snippet
             </span>
@@ -55,7 +63,7 @@
               </a>
             </span>
           </div>
-          <textarea id="snippet" name="snippet" rows="10" cols="30">
+          <textarea id="snippet" name="snippet" rows="10" cols="30" disabled>
           __selectedText
         </textarea
           >

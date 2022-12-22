@@ -5,6 +5,8 @@ import { Uri } from "vscode";
 import { Utils } from "./utils";
 import { DefaultError } from "./utils/constants";
 
+
+// TODO: move this to a separate file
 interface Snippet {
   prefix: string;
   description: string;
@@ -12,7 +14,7 @@ interface Snippet {
 }
 
 export default function openSnippetForm(context: vscode.ExtensionContext) {
-  const editor = vscode.window.activeTextEditor;
+
   const activeLanguage = Utils.editorActiveLanguage();
 
   if (!activeLanguage) {
