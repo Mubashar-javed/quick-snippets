@@ -1,9 +1,9 @@
 {
-  "name": "quick-snippets",
-  "displayName": "Quick Snippets",
+  "name": "quick-snippet",
+  "displayName": "Quick Snippet",
   "description": "Start creating snippets quickly and easily.🚀",
   "version": "0.0.1",
-  "publisher": "Mubashar-Javed",
+  "publisher": "MubasharJaved",
   "icon": "assets/images/qs-icon.png",
   "engines": {
     "vscode": "^1.72.0"
