@@ -18,7 +18,7 @@ Vscode extension that allows users to create and insert user defined code snippe
 
 ## Demo
 
-![App Screenshot](./assets/media/demo/qs-demo.gif)
+![App Screenshot](assets/images/qs-demo.gif)
 
 ## Issues and Fixes
 
