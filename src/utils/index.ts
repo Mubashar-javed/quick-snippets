@@ -1,8 +1,8 @@
-import * as fs from "fs";
-import * as os from "os";
-import * as path from "path";
-import * as vscode from "vscode";
-import { ColorThemeKind } from "vscode";
+import * as fs from 'fs';
+import * as os from 'os';
+import * as path from 'path';
+import * as vscode from 'vscode';
+import {ColorThemeKind} from 'vscode';
 
 export namespace Utils {
   /**
@@ -22,30 +22,30 @@ export namespace Utils {
   export function getUserSettingsPath(): string {
     // TODO: Check for the VSCode Insiders version of the app
 
-    let userSettingsPath = "";
+    let userSettingsPath = '';
     switch (os.platform()) {
-      case "win32":
-        userSettingsPath = path.join(process.env.APPDATA || "", "Code", "User");
+      case 'win32':
+        userSettingsPath = path.join(process.env.APPDATA || '', 'Code', 'User');
         break;
-      case "darwin":
+      case 'darwin':
         userSettingsPath = path.join(
-          process.env.HOME || "",
-          "Library",
-          "Application Support",
-          "Code",
-          "User"
+          process.env.HOME || '',
+          'Library',
+          'Application Support',
+          'Code',
+          'User'
         );
         break;
-      case "linux":
+      case 'linux':
         userSettingsPath = path.join(
-          process.env.HOME || "",
-          ".config",
-          "Code",
-          "User"
+          process.env.HOME || '',
+          '.config',
+          'Code',
+          'User'
         );
         break;
       default:
-        userSettingsPath = "";
+        userSettingsPath = '';
     }
     return userSettingsPath;
   }
@@ -57,7 +57,7 @@ export namespace Utils {
    */
   export function getUserSnippetsPath() {
     const userSettingsPath = getUserSettingsPath();
-    return path.join(userSettingsPath, "snippets");
+    return path.join(userSettingsPath, 'snippets');
   }
 
   /**
@@ -75,24 +75,24 @@ export namespace Utils {
    * @returns The name of the current theme.
    */
   export function getCurrentThemeName(): string {
-    const settingsFile = path.join(getUserSettingsPath(), "settings.json");
+    const settingsFile = path.join(getUserSettingsPath(), 'settings.json');
 
     const jsonData = fs.readFileSync(settingsFile).toString();
 
     // replacing all the comments in the settings.json file as
     // they are not parsed by JSON.parse
-    const replaced = jsonData.replace(/\/\/.*/g, "");
+    const replaced = jsonData.replace(/\/\/.*/g, '');
     const json = JSON.parse(replaced);
-    let themeName: string | undefined = json["workbench.colorTheme"];
+    let themeName: string | undefined = json['workbench.colorTheme'];
     const themeKind = vscode.window.activeColorTheme.kind;
 
     if (!themeName) {
       // mean user is using the default theme
       themeName = {
-        [ColorThemeKind.Light]: "Default Light",
-        [ColorThemeKind.Dark]: "Default Dark",
-        [ColorThemeKind.HighContrast]: "Default High Contrast",
-        [ColorThemeKind.HighContrastLight]: "Default High Contrast Light",
+        [ColorThemeKind.Light]: 'Default Light',
+        [ColorThemeKind.Dark]: 'Default Dark',
+        [ColorThemeKind.HighContrast]: 'Default High Contrast',
+        [ColorThemeKind.HighContrastLight]: 'Default High Contrast Light',
       }[themeKind];
     }
 
