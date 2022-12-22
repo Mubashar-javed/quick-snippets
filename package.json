@@ -3,6 +3,11 @@
   "displayName": "Quick Snippets",
   "description": "Start creating snippets quickly and easily.🚀",
   "version": "0.0.1",
+  "icon": "assets/images/qs-icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mubashar-javed/quick-snippets"
+  },
   "engines": {
     "vscode": "^1.74.0"
   },
@@ -10,7 +15,7 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:quick-snippets.helloWorld"
+    "quick-snippets.createSnippet"
   ],
   "main": "./dist/extension.js",
   "contributes": {
@@ -18,6 +23,13 @@
       {
         "command": "quick-snippets.createSnippet",
         "title": "Quick Snippets: Create Snippet"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "quick-snippets.createSnippet",
+        "key": "ctrl+alt+q",
+        "mac": "cmd+shift+q"
       }
     ]
   },
@@ -30,7 +42,9 @@
     "watch-tests": "tsc -p . -w --outDir out",
     "pretest": "npm run compile-tests && npm run compile && npm run lint",
     "lint": "eslint src --ext ts",
-    "test": "node ./out/test/runTest.js"
+    "test": "node ./out/test/runTest.js",
+    "format": "npm run lint && prettier --write .",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@types/glob": "^8.0.0",
@@ -42,7 +56,9 @@
     "@vscode/test-electron": "^2.2.0",
     "eslint": "^8.28.0",
     "glob": "^8.0.3",
+    "husky": "^8.0.2",
     "mocha": "^10.1.0",
+    "prettier": "^2.8.1",
     "ts-loader": "^9.4.1",
     "typescript": "^4.9.3",
     "webpack": "^5.75.0",
