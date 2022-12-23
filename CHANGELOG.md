@@ -4,8 +4,15 @@
 
 - Multiple Languages syntax highlight support for improved UX.
 - Ability to save the snippets globally.
-- Code refactoring.
 - Placeholders support.
+
+## [0.1.0] - 2022-12-24
+
+### Added
+
+- Fixed indentation issue.
+- Updated broken links.
+- Bug fixes.
 
 ## [0.0.1] - 2022-12-23
 
