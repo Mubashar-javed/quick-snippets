@@ -2,7 +2,7 @@ const vscode = acquireVsCodeApi();
 const prefixInput = document.getElementById('prefix');
 const errorDiv = document.getElementById('prefix-error');
 const saveBtn = document.getElementById('save-btn');
-const formInvalid = prefixInput.value.trim().length === 0;
+let formInvalid = prefixInput.value.trim().length === 0;
 
 function handleSave() {
   const prefix = document.getElementById('prefix').value;
@@ -25,6 +25,7 @@ prefixInput.addEventListener('blur', (event) => {
 
   if (hasValue) {
     errorDiv.classList.add('d-none');
+    formInvalid = false;
   } else {
     errorDiv.classList.remove('d-none');
   }
@@ -36,6 +37,7 @@ prefixInput.addEventListener('keyup', (event) => {
 
   if (hasValue) {
     errorDiv.classList.add('d-none');
+    formInvalid = false;
   } else {
     errorDiv.classList.remove('d-none');
   }

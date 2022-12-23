@@ -1,49 +1,23 @@
 import * as fs from 'fs';
-import * as path from 'path';
 import * as vscode from 'vscode';
 import {Uri} from 'vscode';
 import {Utils} from './utils';
-import {DefaultError} from './utils/constants';
-
-// TODO: move this to a separate file
-interface Snippet {
-  prefix: string;
-  description: string;
-  body: string[];
-}
+import {DefaultError, Snippet} from './utils/constants';
 
 export default function openSnippetForm(context: vscode.ExtensionContext) {
+  // passing active language from here because after openeing the webview
+  // the active language will be undefine as its not a
   const activeLanguage = Utils.editorActiveLanguage();
-
   if (!activeLanguage) {
     vscode.window.showErrorMessage(DefaultError.UNKNOWN_LANGUAGE);
     return;
   }
 
-  const userPath = Utils.getUserSnippetsPath();
-  const snippetFile = path.join(userPath, `${activeLanguage}.json`);
-
-  // TODO: add this in Utils namespace
-  // if (!fs.existsSync(snippetFile)) {
-  //   fs.writeFileSync(snippetFile, "{}");
-  // } else {
-  //   const jsonData = fs.readFileSync(snippetFile, "utf-8");
-  //   const json = JSON.parse(jsonData);
-  //   json["testing-snippet"] = {
-  //     prefix: "testing-snippet",
-  //     description: "",
-  //     body: [
-  //       "const files = fs.readdirSync(snippetPath);",
-  //       "files.forEach(file => {",
-  //       "    console.log(file);",
-  //       "});",
-  //       "vscode.window.showInformationMessage(snippetPath);",
-  //     ],
-  //   };
-
-  //   fs.writeFileSync(snippetFile, JSON.stringify(json, null, 2));
-  //   vscode.window.showInformationMessage("Snippet created!");
-  // }
+  const selectedText = Utils.getSelectedText();
+  if (!selectedText) {
+    vscode.window.showErrorMessage(DefaultError.NO_TEXT);
+    return;
+  }
 
   const panel = vscode.window.createWebviewPanel(
     'snippetForm',
@@ -52,24 +26,20 @@ export default function openSnippetForm(context: vscode.ExtensionContext) {
     {enableScripts: true}
   );
 
-  const selectedText = Utils.getSelectedText();
-  if (!selectedText) {
-    vscode.window.showErrorMessage(DefaultError.NO_TEXT);
-    return;
-  }
-
   panel.webview.html = getWebviewContent(context, panel.webview, selectedText);
-  listenWebviewChanges(panel.webview);
-  panel.onDidDispose(() => {
-    // Clean up our resources
-  });
+  listenWebviewChanges(panel, activeLanguage);
+
+  panel.onDidDispose(() => {}, null, context.subscriptions);
 }
 
-function listenWebviewChanges(webview: vscode.Webview) {
-  webview.onDidReceiveMessage((message) => {
+function listenWebviewChanges(
+  panel: vscode.WebviewPanel,
+  activeLanguage: string
+) {
+  panel.webview.onDidReceiveMessage((message) => {
     switch (message.command) {
       case 'save':
-        const snippet = message.data as Snippet;
+        Utils.saveSnippet(message.data as Snippet, panel, activeLanguage);
     }
   });
 }

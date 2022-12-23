@@ -3,6 +3,7 @@ import * as os from 'os';
 import * as path from 'path';
 import * as vscode from 'vscode';
 import {ColorThemeKind} from 'vscode';
+import {Snippet} from './constants';
 
 export namespace Utils {
   /**
@@ -97,5 +98,38 @@ export namespace Utils {
     }
 
     return themeName;
+  }
+
+  /**
+   * It takes a snippet object, a webview panel, and the active language, and saves the snippet to the
+   * user's snippets file
+   * @param {Snippet} snippet - Snippet
+   * @param panel - The webview panel that is showing the snippet form
+   * @param {string} activeLanguage - The language for which the snippet is being created.
+   */
+  export function saveSnippet(
+    snippet: Snippet,
+    panel: vscode.WebviewPanel,
+    activeLanguage: string
+  ) {
+    const userPath = Utils.getUserSnippetsPath();
+    const snippetFile = path.join(userPath, `${activeLanguage}.json`);
+
+    const {prefix, description, body} = snippet;
+
+    if (!fs.existsSync(snippetFile)) {
+      fs.writeFileSync(snippetFile, '{}');
+    } else {
+      if (fs.readFileSync(snippetFile, 'utf-8').length === 0) {
+        fs.writeFileSync(snippetFile, '{}');
+      }
+      const jsonData = fs.readFileSync(snippetFile, 'utf-8');
+      const json = JSON.parse(jsonData);
+      json[prefix] = {prefix, description, body: [body]};
+
+      fs.writeFileSync(snippetFile, JSON.stringify(json, null, 2));
+      vscode.window.showInformationMessage('Snippet saved successfully! 😎');
+      panel.dispose();
+    }
   }
 }

@@ -1,9 +1,17 @@
 # Change Log
 
-All notable changes to the "quick-snippets" extension will be documented in this file.
-
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
-
 ## [Unreleased]
 
-- Initial release
+- Multiple Languages syntax highlight support for improved UX.
+- Ability to save the snippets globally.
+- Code refactoring.
+- Placeholders support.
+
+## [0.0.1] - 2022-12-23
+
+### Added
+
+- Added support to save the snippets locally (file-wise in json).
+- Persisted the state of the webview between switches.
+- Added validations on inputs.
+- Added syntax highlighting support for limited languages.
