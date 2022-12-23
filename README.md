@@ -14,7 +14,7 @@ Vscode extension that allows users to create and insert user defined code snippe
 - Select a section of code that you want to be converted into snipper and press `CTRL + ALT + Q` (keybinding can be changed in settings)
 - Or you can use the command `Quick Snippet: Create Snippet` to create a snippet through command palette ( `CMD + SHIFT + P` for mac OS, `CTRL + SHIFT + P` for Windows)
 - The extension will automatically format the snippet and add the title and description
-- Click the save button to save the snippet, and that's all you need to do 😄
+- Click the save button to save the snippet, and that's all you need to do :relaxed:
 
 ## Demo
 
@@ -36,6 +36,6 @@ To be able to contribute to Quick Snippet development, you need to be at ease wi
 
 ## Authors
 
-- [@Mubashar Javed](https://www.github.com/Mubashar-javed)
-- [@Asad Ashraf](https://github.com/Asad9988)
-- [@Muhammad Faisal](https://github.com/Asad9988)
+- [Mubashar Javed](https://www.github.com/Mubashar-javed)
+- [Asad Ashraf](https://github.com/Assad-Ashraf)
+- [Muhammad Faisal](https://github.com/faysaljafry)
