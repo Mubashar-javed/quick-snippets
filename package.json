@@ -2,7 +2,7 @@
   "name": "quick-snippet",
   "displayName": "Quick Snippet",
   "description": "Start creating snippets quickly and easily.🚀",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "MubasharJaved",
   "icon": "assets/images/qs-icon.png",
   "engines": {
