@@ -39,7 +39,9 @@ function listenWebviewChanges(
   panel.webview.onDidReceiveMessage((message) => {
     switch (message.command) {
       case 'save':
-        Utils.saveSnippet(message.data as Snippet, panel, activeLanguage);
+        const data = message.data;
+        data.body = (data.body as string).trim().split('\n');
+        Utils.saveSnippet(data as Snippet, panel, activeLanguage);
     }
   });
 }
@@ -66,7 +68,7 @@ function getWebviewContent(
   // put selected text, style path, as well as main path in the html file
   //TODO: use a template string approach to do this
   return html
-    .replace('__selectedText', selectedText)
+    .replace('__selectedText', selectedText.trim())
     .replace('__stylePath', stylePath.toString())
     .replace('__mainPath', mainPath.toString())
     .replace('__language', selectionLanguage); //this is for future use when we add support for multiple languages

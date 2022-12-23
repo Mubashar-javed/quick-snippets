@@ -42,3 +42,9 @@ prefixInput.addEventListener('keyup', (event) => {
     errorDiv.classList.remove('d-none');
   }
 });
+
+window.addEventListener('load', () => {
+  const snippetArea = document.getElementById('snippet-area');
+  const snippetText = snippetArea.textContent.trim();
+  snippetArea.textContent = snippetText;
+});

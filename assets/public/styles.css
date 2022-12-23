@@ -48,7 +48,7 @@ label {
 input,
 #snippet-area,
 #snippet-text-area {
-  font-size: medium;
+  font-size: 13px;
   color: var(--vscode-settings-textInputForeground);
   border: 1px solid rgb(151, 149, 149);
   border-radius: 3px;
@@ -57,8 +57,11 @@ input,
   background-color: var(--vscode-settings-textInputBackground);
 }
 
-textarea {
+textarea,
+#snippet-area {
   min-height: 300px;
+  max-height: 300px;
+  overflow: auto;
   resize: none;
 }
 
@@ -139,7 +142,12 @@ pre {
   border-radius: 3px;
 }
 
-:disabled {
+:disabled,
+#snippet-area {
   cursor: not-allowed;
   user-select: none;
+}
+
+pre {
+  margin-top: 0;
 }
