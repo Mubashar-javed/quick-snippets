@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="__stylePath" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/themes/prism.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/prism.min.js"></script>
+
     <title>Snippet Form</title>
   </head>
   <body>
@@ -60,10 +65,11 @@
               </a>
             </span>
           </div>
-          <textarea id="snippet" name="snippet" rows="10" cols="30" disabled>
+          <pre id="snippet-area" name="snippet">
+            <code class="language-javascript" >
           __selectedText
-        </textarea
-          >
+        </code>
+          </pre>
         </div>
         <div class="button-container">
           <button id="save-btn" onclick="handleSave()">Save Snippet</button>
@@ -75,20 +81,20 @@
     <script>
       const prefix = document.getElementById('prefix');
       const description = document.getElementById('description');
-      const snippet = document.getElementById('snippet');
+      const snippet = document.getElementById('snippet-area');
 
       const prevState = vscode.getState();
       if (prevState) {
         prefix.value = prevState.prefix;
         description.value = prevState.description;
-        snippet.innerText = prevState.snippet;
+        snippet.value = prevState.snippet;
       }
 
       setInterval(() => {
         vscode.setState({
           prefix: prefix.value,
           description: description.value,
-          snippet: snippet.value,
+          snippet: snippet.textContent,
         });
       }, 1000);
     </script>

@@ -125,7 +125,7 @@ export namespace Utils {
       }
       const jsonData = fs.readFileSync(snippetFile, 'utf-8');
       const json = JSON.parse(jsonData);
-      json[prefix] = {prefix, description, body: [body]};
+      json[prefix] = {prefix, description, body};
 
       fs.writeFileSync(snippetFile, JSON.stringify(json, null, 2));
       vscode.window.showInformationMessage('Snippet saved successfully! 😎');

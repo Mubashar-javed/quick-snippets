@@ -46,7 +46,8 @@ label {
 }
 
 input,
-textarea {
+#snippet-area,
+#snippet-text-area {
   font-size: 13px;
   color: var(--vscode-settings-textInputForeground);
   border: 1px solid rgb(151, 149, 149);
@@ -56,8 +57,11 @@ textarea {
   background-color: var(--vscode-settings-textInputBackground);
 }
 
-textarea {
+textarea,
+#snippet-area {
   min-height: 300px;
+  max-height: 300px;
+  overflow: auto;
   resize: none;
 }
 
@@ -128,7 +132,22 @@ button:hover {
   }
 }
 
-:disabled {
+pre {
+  font-family: 'Segoe WPC', 'Segoe UI', sans-serif, Consolas, 'Courier New',
+    monospace;
+  font-size: 14px;
+  color: var(--vscode-button-foreground);
+  background-color: var(--vscode-editor-background);
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+:disabled,
+#snippet-area {
   cursor: not-allowed;
   user-select: none;
+}
+
+pre {
+  margin-top: 0;
 }

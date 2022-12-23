@@ -7,7 +7,7 @@ let formInvalid = prefixInput.value.trim().length === 0;
 function handleSave() {
   const prefix = document.getElementById('prefix').value;
   const description = document.getElementById('description').value;
-  const body = document.getElementById('snippet').value;
+  const body = document.getElementById('snippet-area').textContent;
 
   if (formInvalid) {
     errorDiv.classList.remove('d-none');
@@ -41,4 +41,10 @@ prefixInput.addEventListener('keyup', (event) => {
   } else {
     errorDiv.classList.remove('d-none');
   }
+});
+
+window.addEventListener('load', () => {
+  const snippetArea = document.getElementById('snippet-area');
+  const snippetText = snippetArea.textContent.trim();
+  snippetArea.textContent = snippetText;
 });
