@@ -47,4 +47,6 @@ window.addEventListener('load', () => {
   const snippetArea = document.getElementById('snippet-area');
   const snippetText = snippetArea.textContent.trim();
   snippetArea.textContent = snippetText;
+
+  document.getElementById('prefix').focus();
 });
